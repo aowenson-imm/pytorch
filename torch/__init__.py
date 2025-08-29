@@ -367,35 +367,35 @@ def _load_global_deps(force_wheel=False) -> None:
             # 2 patterns defined for each lib - first is specific,
             # second is generic backup.
             cuda_maj = int(cuda_version_str.split(".")[0])
-		    cuda_libs: dict[str, _Union[str, list[str]] ] = {
-		        "cublas": [f"libcublas.so.{cuda_maj}*", "libcublas.so.[0-9]"],
-		        "cudnn": [f"libcudnn.so.{cuda_maj-3}*", "libcudnn.so.*[0-9]"],
-		        "cuda_nvrtc": [f"libnvrtc.so.{cuda_maj}*", "libnvrtc.so.*[0-9]"],
-		        "cuda_runtime": [f"libcudart.so.{cuda_maj}*","libcudart.so.*[0-9]"],
-		        "cuda_cupti": [f"libcupti.so.{cuda_maj}*","libcupti.so.*[0-9]"],
-		        "cufft": [f"libcufft.so.{cuda_maj-1}*", "libcufft.so.*[0-9]"],
-		        "curand": [f"libcurand.so.{cuda_maj-2}*", "libcurand.so.*[0-9]"],
-		        "nvjitlink": "libnvJitLink.so.*[0-9]",
-		        "cusparse": [f"libcusparse.so.{cuda_maj}*", "libcusparse.so.*[0-9]"],
-		        "cusparselt": [f"libcusparseLt.so.{cuda_maj}*", "libcusparseLt.so.*[0-9]"],
-		        "cusolver": [f"libcusolver.so.{cuda_maj-1}", "libcusolver.so.*[0-9]"],
-		        "nccl": "libnccl.so.*[0-9]",
-		    }
+            cuda_libs: dict[str, _Union[str, list[str]] ] = {
+                "cublas": [f"libcublas.so.{cuda_maj}*", "libcublas.so.[0-9]"],
+                "cudnn": [f"libcudnn.so.{cuda_maj-3}*", "libcudnn.so.*[0-9]"],
+                "cuda_nvrtc": [f"libnvrtc.so.{cuda_maj}*", "libnvrtc.so.*[0-9]"],
+                "cuda_runtime": [f"libcudart.so.{cuda_maj}*","libcudart.so.*[0-9]"],
+                "cuda_cupti": [f"libcupti.so.{cuda_maj}*","libcupti.so.*[0-9]"],
+                "cufft": [f"libcufft.so.{cuda_maj-1}*", "libcufft.so.*[0-9]"],
+                "curand": [f"libcurand.so.{cuda_maj-2}*", "libcurand.so.*[0-9]"],
+                "nvjitlink": "libnvJitLink.so.*[0-9]",
+                "cusparse": [f"libcusparse.so.{cuda_maj}*", "libcusparse.so.*[0-9]"],
+                "cusparselt": [f"libcusparseLt.so.{cuda_maj}*", "libcusparseLt.so.*[0-9]"],
+                "cusolver": [f"libcusolver.so.{cuda_maj-1}", "libcusolver.so.*[0-9]"],
+                "nccl": "libnccl.so.*[0-9]",
+            }
         else:
-		    cuda_libs: dict[str, str] = {
-		        "cublas": "libcublas.so.*[0-9]",
-		        "cudnn": "libcudnn.so.*[0-9]",
-		        "cuda_nvrtc": "libnvrtc.so.*[0-9]",
-		        "cuda_runtime": "libcudart.so.*[0-9]",
-		        "cuda_cupti": "libcupti.so.*[0-9]",
-		        "cufft": "libcufft.so.*[0-9]",
-		        "curand": "libcurand.so.*[0-9]",
-		        "nvjitlink": "libnvJitLink.so.*[0-9]",
-		        "cusparse": "libcusparse.so.*[0-9]",
-		        "cusparselt": "libcusparseLt.so.*[0-9]",
-		        "cusolver": "libcusolver.so.*[0-9]",
-		        "nccl": "libnccl.so.*[0-9]",
-		    }
+            cuda_libs: dict[str, str] = {
+                "cublas": "libcublas.so.*[0-9]",
+                "cudnn": "libcudnn.so.*[0-9]",
+                "cuda_nvrtc": "libnvrtc.so.*[0-9]",
+                "cuda_runtime": "libcudart.so.*[0-9]",
+                "cuda_cupti": "libcupti.so.*[0-9]",
+                "cufft": "libcufft.so.*[0-9]",
+                "curand": "libcurand.so.*[0-9]",
+                "nvjitlink": "libnvJitLink.so.*[0-9]",
+                "cusparse": "libcusparse.so.*[0-9]",
+                "cusparselt": "libcusparseLt.so.*[0-9]",
+                "cusolver": "libcusolver.so.*[0-9]",
+                "nccl": "libnccl.so.*[0-9]",
+            }
         # cufiile is only available on cuda 12+
         # TODO: Remove once CUDA 11.8 binaries are deprecated
         if cuda_version is not None:
